@@ -71,13 +71,13 @@ headsepline, % Uncomment to get a line under the header
 \thesistitle{Deep Learning For Predictive Maintenance} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Dr. Manuel \textsc{Sánchez-Montañés Isla}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
-\degree{Doctor of Philosophy} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\degree{Software Engineer} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
 \author{Hugo \textsc{Pérez Blasco}} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
 \addresses{} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
 
 \subject{Machine Learning} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
 \keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
-\university{\href{http://www.http://mbitschool.academy/}{MBit School}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\university{\href{http://mbitschool.academy/}{MBit School}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
 %\department{\href{http://department.university.com}{Department or School Name}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
 %\group{\href{http://researchgroup.university.com}{Research Group Name}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 %\faculty{\href{http://faculty.university.com}{Faculty Name}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
@@ -181,7 +181,12 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+Predictive maintenance encompasses a variety of topics, including but not limited to: failure prediction, failure diagnosis (root cause analysis), failure detection, failure type classification, and recommendation of mitigation or maintenance actions after failure \parencite{Reference1}.
+
+Predictive Maintenance is also a domain where data is collected over time to monitor the state of an asset with the goal of finding patterns to predict failures which can also benefit from certain deep learning algorithms \parencite{Reference2}.
+This study uses simulated aircraft sensor values to predict when an aircraft engine will fail in the future so that maintenance can be planned in advance \parencite{Reference3}.
+
+The goal of this dissertation if to do a trade-off over the different deep learning architectures and models that compound the current state of the art concerning the prediction and classification over time series data.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -218,36 +223,36 @@ The Thesis Abstract is written here (and usually kept to just this page). The pa
 %	PHYSICAL CONSTANTS/OTHER DEFINITIONS
 %----------------------------------------------------------------------------------------
 
-\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
+%\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
 
 % The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
 
-Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
+%Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
 %Constant Name & $Symbol$ & $Constant Value$ with units\\
 
-\end{constants}
+%\end{constants}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
 %----------------------------------------------------------------------------------------
 
-\begin{symbols}{lll} % Include a list of Symbols (a three column table)
+%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
 
-$a$ & distance & \si{\meter} \\
-$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
+%$a$ & distance & \si{\meter} \\
+%$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
 %Symbol & Name & Unit \\
 
-\addlinespace % Gap to separate the Roman symbols from the Greek
+%\addlinespace % Gap to separate the Roman symbols from the Greek
 
-$\omega$ & angular frequency & \si{\radian} \\
+%$\omega$ & angular frequency & \si{\radian} \\
 
-\end{symbols}
+%\end{symbols}
 
 %----------------------------------------------------------------------------------------
 %	DEDICATION
 %----------------------------------------------------------------------------------------
 
-\dedicatory{For/Dedicated to/To my\ldots} 
+%\dedicatory{For/Dedicated to/To my\ldots}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -272,7 +277,7 @@ $\omega$ & angular frequency & \si{\radian} \\
 
 \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
 
-% Include the appendices of the thesis as separate files from the Appendices folder
+% Include the Appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
 \input{Appendices/AppendixA}

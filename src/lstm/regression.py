@@ -29,14 +29,14 @@ np.random.seed(1234)
 PYTHONHASHSEED = 0
 
 # define path to save model
-model_path = '../../Output/regression_model.h5'
+model_path = '../../output/regression_model.h5'
 
 ##################################
 # Data Ingestion
 ##################################
 
 # read training data - It is the aircraft engine run-to-failure data.
-train_df = pd.read_csv('../../Dataset/PM_train.txt', sep=" ", header=None)
+train_df = pd.read_csv('../../dataset/PM_train.txt', sep=" ", header=None)
 train_df.drop(train_df.columns[[26, 27]], axis=1, inplace=True)
 train_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2', 's3',
                      's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14',
@@ -45,14 +45,14 @@ train_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2
 train_df = train_df.sort_values(['id','cycle'])
 
 # read test data - It is the aircraft engine operating data without failure events recorded.
-test_df = pd.read_csv('../../Dataset/PM_test.txt', sep=" ", header=None)
+test_df = pd.read_csv('../../dataset/PM_test.txt', sep=" ", header=None)
 test_df.drop(test_df.columns[[26, 27]], axis=1, inplace=True)
 test_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2', 's3',
                      's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14',
                      's15', 's16', 's17', 's18', 's19', 's20', 's21']
 
 # read ground truth data - It contains the information of true remaining cycles for each engine in the testing data.
-truth_df = pd.read_csv('../../Dataset/PM_truth.txt', sep=" ", header=None)
+truth_df = pd.read_csv('../../dataset/PM_truth.txt', sep=" ", header=None)
 truth_df.drop(truth_df.columns[[1]], axis=1, inplace=True)
 
 ##################################
@@ -88,7 +88,7 @@ norm_train_df = pd.DataFrame(min_max_scaler.fit_transform(train_df[cols_normaliz
 join_df = train_df[train_df.columns.difference(cols_normalize)].join(norm_train_df)
 train_df = join_df.reindex(columns = train_df.columns)
 
-#train_df.to_csv('../../Dataset/PredictiveManteinanceEngineTraining.csv', encoding='utf-8',index = None)
+#train_df.to_csv('../../dataset/PredictiveManteinanceEngineTraining.csv', encoding='utf-8',index = None)
 
 ######
 # TEST
@@ -122,7 +122,7 @@ test_df['label1'] = np.where(test_df['RUL'] <= w1, 1, 0 )
 test_df['label2'] = test_df['label1']
 test_df.loc[test_df['RUL'] <= w0, 'label2'] = 2
 
-#test_df.to_csv('../../Dataset/PredictiveManteinanceEngineValidation.csv', encoding='utf-8',index = None)
+#test_df.to_csv('../../dataset/PredictiveManteinanceEngineValidation.csv', encoding='utf-8',index = None)
 
 # pick a large window size of 50 cycles
 sequence_length = 50
@@ -198,12 +198,14 @@ label_array.shape
 # Modeling
 ##################################
 
+
 def r2_keras(y_true, y_pred):
     """Coefficient of Determination 
     """
     SS_res =  K.sum(K.square( y_true - y_pred ))
     SS_tot = K.sum(K.square( y_true - K.mean(y_true) ) )
     return ( 1 - SS_res/(SS_tot + K.epsilon()) )
+
 
 # Next, we build a deep network. 
 # The first layer is an LSTM layer with 100 units followed by another LSTM layer with 50 units. 
@@ -246,18 +248,18 @@ plt.ylabel('R^2')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-fig_acc.savefig("../../Output/model_r2.png")
+fig_acc.savefig("../../output/model_r2.png")
 
 # summarize history for MAE
 fig_acc = plt.figure(figsize=(10, 10))
-plt.plot(history.history['mean_absolute_error'])
-plt.plot(history.history['val_mean_absolute_error'])
+plt.plot(history.history['mae'])
+plt.plot(history.history['val_mae'])
 plt.title('model MAE')
 plt.ylabel('MAE')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-fig_acc.savefig("../../Output/model_mae.png")
+fig_acc.savefig("../../output/model_mae.png")
 
 # summarize history for Loss
 fig_acc = plt.figure(figsize=(10, 10))
@@ -268,7 +270,7 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-fig_acc.savefig("../../Output/model_regression_loss.png")
+fig_acc.savefig("../../output/model_regression_loss.png")
 
 # training metrics
 scores = model.evaluate(seq_array, label_array, verbose=1, batch_size=200)
@@ -279,7 +281,7 @@ y_pred = model.predict(seq_array,verbose=1, batch_size=200)
 y_true = label_array
 
 test_set = pd.DataFrame(y_pred)
-test_set.to_csv('../../Output/submit_train.csv', index = None)
+test_set.to_csv('../../output/submit_train.csv', index = None)
 
 ##################################
 # EVALUATE ON TEST DATA
@@ -316,7 +318,7 @@ if os.path.isfile(model_path):
     y_true_test = label_array_test_last
 
     test_set = pd.DataFrame(y_pred_test)
-    test_set.to_csv('../../Output/submit_test.csv', index = None)
+    test_set.to_csv('../../output/submit_test.csv', index = None)
 
     # Plot in blue color the predicted data and in green color the
     # actual data to verify visually the accuracy of the model.
@@ -328,4 +330,4 @@ if os.path.isfile(model_path):
     plt.xlabel('row')
     plt.legend(['predicted', 'actual data'], loc='upper left')
     plt.show()
-    fig_verify.savefig("../../Output/model_regression_verify.png")
+    fig_verify.savefig("../../output/model_regression_verify.png")

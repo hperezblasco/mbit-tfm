@@ -1,6 +1,6 @@
 % Chapter 1
 
-\chapter{Chapter Title Here} % Main chapter title
+\chapter{Objectives} % Main chapter title
 
 \label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
 
@@ -15,47 +15,61 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Welcome and Thank You}
-Welcome to this \LaTeX{} Thesis Template, a beautiful and easy to use template for writing a thesis using the \LaTeX{} typesetting system.
+\section{Problem Description}
+Aircraft lifetime and maintenance is a recurrent problem for companies due to its high costs.
+Being able to predict when an aircraft is going to have failures or malfunctioning is a key topic for improving costs and performance of this machines.
 
-If you are writing a thesis (or will be in the future) and its subject is technical or mathematical (though it doesn't have to be), then creating it in \LaTeX{} is highly recommended as a way to make sure you can just get down to the essential writing without having to worry over formatting or wasting time arguing with your word processor.
+The scenario uses data from simulated aircraft sensor to predict when an aircraft engine will fail in the future.
+Two different approaches are used for this problem:
 
-\LaTeX{} is easily able to professionally typeset documents that run to hundreds or thousands of pages long. With simple mark-up commands, it automatically sets out the table of contents, margins, page headers and footers and keeps the formatting consistent and beautiful. One of its main strengths is the way it can easily typeset mathematics, even \emph{heavy} mathematics. Even if those equations are the most horribly twisted and most difficult mathematical problems that can only be solved on a super-computer, you can at least count on \LaTeX{} to make them look stunning.
+\begin{itemize}
+\item A regression models that manages to answer the question: How many more cycles an in-service engine will last before it fails?
+\item A binary classification model that manages to answer the question: Is this engine going to fail within a specific number of time cycles?
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 
-\section{Learning \LaTeX{}}
+\section{Data Summary}\label{sec:data-summary}
 
-\LaTeX{} is not a \textsc{wysiwyg} (What You See is What You Get) program, unlike word processors such as Microsoft Word or Apple's Pages. Instead, a document written for \LaTeX{} is actually a simple, plain text file that contains \emph{no formatting}. You tell \LaTeX{} how you want the formatting in the finished document by writing in simple commands amongst the text, for example, if I want to use \emph{italic text for emphasis}, I write the \verb|\emph{text}| command and put the text I want in italics in between the curly braces. This means that \LaTeX{} is a \enquote{mark-up} language, very much like HTML.
+The data provided is divided in three different sets:
 
-\subsection{A (not so short) Introduction to \LaTeX{}}
+\subsection{Training data}\label{subsec:training-data}
 
-If you are new to \LaTeX{}, there is a very good eBook -- freely available online as a PDF file -- called, \enquote{The Not So Short Introduction to \LaTeX{}}. The book's title is typically shortened to just \emph{lshort}. You can download the latest version (as it is occasionally updated) from here:
-\url{http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}
+The training data consists of multiple multivariate time series with "cycle" as the time unit, together with 21 sensor readings for each cycle.
+Each time series can be assumed as being generated from a different engine of the same type.
+Each engine is assumed to start with different degrees of initial wear and manufacturing variation, and this information is unknown to the user.
+In this simulated data, the engine is assumed to be operating normally at the start of each time series.
+It starts to degrade at some point during the series of the operating cycles.
+The degradation progresses and grows in magnitude.
+When a predefined threshold is reached, then the engine is considered unsafe for further operation.
+In other words, the last cycle in each time series can be considered as the failure point of the corresponding engine.
+Taking the sample training data shown in the following table as an example, the engine with id=1 fails at cycle 192, and engine with id=2 fails at cycle 287.
 
-It is also available in several other languages. Find yours from the list on this page: \url{http://www.ctan.org/tex-archive/info/lshort/}
+\begin{table}
+\caption{Training Data}
+\label{tab:training-data}
+\centering
+\begin{tabular}{l l l l l l l l l }
+\toprule
+\tabhead{Id} & \tabhead{Cycle} & \tabhead{Setting 1} & \tabhead{Setting 2} & \tabhead{S1} & \tabhead{S2} & \tabhead{S3} & \tabhead{...} \\
+\midrule
+1  & 1     & -0.0007  & -0.0004  & 100.0    & 518.67 & 641.82 & ... \\
+1  & 2     & 0.0019   & -0.0003  & 100.0    & 518.67 & 642.15 & ... \\
+1  & 3     & -0.0043  & 0.0003   & 100.0    & 518.67 & 642.35 & ... \\
+\bottomrule\\
+\end{tabular}
+\end{table}
 
-It is recommended to take a little time out to learn how to use \LaTeX{} by creating several, small `test' documents, or having a close look at several templates on:\\ 
-\url{http://www.LaTeXTemplates.com}\\ 
-Making the effort now means you're not stuck learning the system when what you \emph{really} need to be doing is writing your thesis.
+\subsection{Text data}\label{subsec:text-data}
 
-\subsection{A Short Math Guide for \LaTeX{}}
+The testing data has the same data schema as the training data.
+The only difference is that the data does not indicate when the failure occurs (in other words, the last time period does NOT represent the failure point).
+Taking the sample testing data shown in the following table as an example, the engine with id=1 runs from cycle 1 through cycle 31.
+It is not shown how many more cycles this engine can last before it fails.
 
-If you are writing a technical or mathematical thesis, then you may want to read the document by the AMS (American Mathematical Society) called, \enquote{A Short Math Guide for \LaTeX{}}. It can be found online here:
-\url{http://www.ams.org/tex/amslatex.html}
-under the \enquote{Additional Documentation} section towards the bottom of the page.
-
-\subsection{Common \LaTeX{} Math Symbols}
-There are a multitude of mathematical symbols available for \LaTeX{} and it would take a great effort to learn the commands for them all. The most common ones you are likely to use are shown on this page:
-\url{http://www.sunilpatel.co.uk/latex-type/latex-math-symbols/}
-
-You can use this page as a reference or crib sheet, the symbols are rendered as large, high quality images so you can quickly find the \LaTeX{} command for the symbol you need.
-
-\subsection{\LaTeX{} on a Mac}
- 
-The \LaTeX{} distribution is available for many systems including Windows, Linux and Mac OS X. The package for OS X is called MacTeX and it contains all the applications you need -- bundled together and pre-customized -- for a fully working \LaTeX{} environment and work flow.
- 
-MacTeX includes a custom dedicated \LaTeX{} editor called TeXShop for writing your `\file{.tex}' files and BibDesk: a program to manage your references and create your bibliography section just as easily as managing songs and creating playlists in iTunes.
+\subsection{Ground truth data}\label{subsec:ground-truth-data}
+The ground truth data provides the number of remaining working cycles for the engines in the testing data.
+Taking the sample ground truth data shown in the following table as an example, the engine with id=1 in the testing data can run another 112 cycles before it fails.
 
 %----------------------------------------------------------------------------------------
 
@@ -105,7 +119,7 @@ This chapter layout is specialised for the experimental sciences, your disciplin
 
 Included are also several files, most of them are plain text and you can see their contents in a text editor. After initial compilation, you will see that more auxiliary files are created by \LaTeX{} or BibTeX and which you don't need to delete or worry about:
 
-\keyword{example.bib} -- this is an important file that contains all the bibliographic information and references that you will be citing in the thesis for use with BibTeX. You can write it manually, but there are reference manager programs available that will create and manage it for you. Bibliographies in \LaTeX{} are a large subject and you may need to read about BibTeX before starting with this. Many modern reference managers will allow you to export your references in BibTeX format which greatly eases the amount of work you have to do.
+\keyword{bibliography.bib} -- this is an important file that contains all the bibliographic information and references that you will be citing in the thesis for use with BibTeX. You can write it manually, but there are reference manager programs available that will create and manage it for you. Bibliographies in \LaTeX{} are a large subject and you may need to read about BibTeX before starting with this. Many modern reference managers will allow you to export your references in BibTeX format which greatly eases the amount of work you have to do.
 
 \keyword{MastersDoctoralThesis.cls} -- this is an important file. It is the class file that tells \LaTeX{} how to format the thesis. 
 

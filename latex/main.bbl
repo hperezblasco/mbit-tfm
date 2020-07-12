@@ -1,0 +1,98 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{Reference2}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=FBAA}{%
+         family={Fidan\bibnamedelima Boylu},
+         familyi={F\bibinitperiod\bibinitdelim B\bibinitperiod},
+         given={Ahmad\bibnamedelima Afsar},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {GitHub}%
+    }
+    \strng{namehash}{FBAA1}
+    \strng{fullhash}{FBAA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{year}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{howpublished}{\url
+  {https://github.com/Azure/lstms_for_predictive_maintenance}}
+    \field{title}{LSTMs for Predictive Maintenance}
+    \field{journaltitle}{GitHub repository}
+    \field{month}{07}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Reference3}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=GU}{%
+         family={Griffo},
+         familyi={G\bibinitperiod},
+         given={Umberto},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {GitHub}%
+    }
+    \strng{namehash}{GU1}
+    \strng{fullhash}{GU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{year}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{howpublished}{\url
+  {https://github.com/umbertogriffo/Predictive-Maintenance-using-LSTM}}
+    \field{title}{Recurrent Neural Networks for Predictive Maintenance}
+    \field{journaltitle}{GitHub repository}
+    \field{month}{04}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Reference1}{online}{}
+    \list{organization}{1}{%
+      {Microsoft Azure AI}%
+    }
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{year}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Predictive Maintenance: Step 2A of 3, train and evaluate
+  regression models}
+    \verb{url}
+    \verb https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-2A-of
+    \verb -3-train-and-evaluate-regression-models-2
+    \endverb
+    \field{month}{04}
+    \field{year}{2015}
+    \field{urlday}{01}
+    \field{urlmonth}{07}
+    \field{urlyear}{2020}
+  \endentry
+\enddatalist
+\endinput

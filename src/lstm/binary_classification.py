@@ -26,14 +26,14 @@ from keras.models import Sequential,load_model
 from keras.layers import Dense, Dropout, LSTM
 
 # define path to save model
-model_path = '../../Output/binary_model.h5'
+model_path = '../../output/binary_model.h5'
 
 ##################################
 # Data Ingestion
 ##################################
 
 # read training data - It is the aircraft engine run-to-failure data.
-train_df = pd.read_csv('../../Dataset/PM_train.txt', sep=" ", header=None)
+train_df = pd.read_csv('../../dataset/PM_train.txt', sep=" ", header=None)
 train_df.drop(train_df.columns[[26, 27]], axis=1, inplace=True)
 train_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2', 's3',
                      's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14',
@@ -42,14 +42,14 @@ train_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2
 train_df = train_df.sort_values(['id','cycle'])
 
 # read test data - It is the aircraft engine operating data without failure events recorded.
-test_df = pd.read_csv('../../Dataset/PM_test.txt', sep=" ", header=None)
+test_df = pd.read_csv('../../dataset/PM_test.txt', sep=" ", header=None)
 test_df.drop(test_df.columns[[26, 27]], axis=1, inplace=True)
 test_df.columns = ['id', 'cycle', 'setting1', 'setting2', 'setting3', 's1', 's2', 's3',
                      's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14',
                      's15', 's16', 's17', 's18', 's19', 's20', 's21']
 
 # read ground truth data - It contains the information of true remaining cycles for each engine in the testing data.
-truth_df = pd.read_csv('../../Dataset/PM_truth.txt', sep=" ", header=None)
+truth_df = pd.read_csv('../../dataset/PM_truth.txt', sep=" ", header=None)
 truth_df.drop(truth_df.columns[[1]], axis=1, inplace=True)
 
 ##################################
@@ -217,14 +217,14 @@ print(history.history.keys())
 
 # summarize history for Accuracy
 fig_acc = plt.figure(figsize=(10, 10))
-plt.plot(history.history['acc'])
-plt.plot(history.history['val_acc'])
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
 plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-fig_acc.savefig("../../Output/model_accuracy.png")
+fig_acc.savefig("../../output/model_accuracy.png")
 
 # summarize history for Loss
 fig_acc = plt.figure(figsize=(10, 10))
@@ -235,7 +235,7 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-fig_acc.savefig("../../Output/model_loss.png")
+fig_acc.savefig("../../output/model_loss.png")
 
 # training metrics
 scores = model.evaluate(seq_array, label_array, verbose=1, batch_size=200)
@@ -246,7 +246,7 @@ y_pred = model.predict_classes(seq_array,verbose=1, batch_size=200)
 y_true = label_array
 
 test_set = pd.DataFrame(y_pred)
-test_set.to_csv('../../Output/binary_submit_train.csv', index = None)
+test_set.to_csv('../../output/binary_submit_train.csv', index = None)
 
 print('Confusion matrix\n- x-axis is true labels.\n- y-axis is predicted labels')
 cm = confusion_matrix(y_true, y_pred)
@@ -297,7 +297,7 @@ y_pred_test = estimator.predict_classes(seq_array_test_last)
 y_true_test = label_array_test_last
 
 test_set = pd.DataFrame(y_pred_test)
-test_set.to_csv('../../Output/binary_submit_test.csv', index = None)
+test_set.to_csv('../../output/binary_submit_test.csv', index = None)
 
 print('Confusion matrix\n- x-axis is true labels.\n- y-axis is predicted labels')
 cm = confusion_matrix(y_true_test, y_pred_test)
@@ -319,4 +319,4 @@ plt.ylabel('value')
 plt.xlabel('row')
 plt.legend(['predicted', 'actual data'], loc='upper left')
 plt.show()
-fig_verify.savefig("../../Output/model_verify.png")
+fig_verify.savefig("../../output/model_verify.png")
