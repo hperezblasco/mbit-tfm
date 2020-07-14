@@ -43,7 +43,7 @@ It starts to degrade at some point during the series of the operating cycles.
 The degradation progresses and grows in magnitude.
 When a predefined threshold is reached, then the engine is considered unsafe for further operation.
 In other words, the last cycle in each time series can be considered as the failure point of the corresponding engine.
-Taking the sample training data shown in the following table as an example, the engine with id=1 fails at cycle 192, and engine with id=2 fails at cycle 287.
+Taking the sample training data shown in the following table as an example, the engine with id=1 fails at cycle 192.
 
 \begin{table}
 \caption{Training Data}
@@ -53,9 +53,16 @@ Taking the sample training data shown in the following table as an example, the 
 \toprule
 \tabhead{Id} & \tabhead{Cycle} & \tabhead{Setting 1} & \tabhead{Setting 2} & \tabhead{S1} & \tabhead{S2} & \tabhead{S3} & \tabhead{...} \\
 \midrule
-1  & 1     & -0.0007  & -0.0004  & 100.0    & 518.67 & 641.82 & ... \\
-1  & 2     & 0.0019   & -0.0003  & 100.0    & 518.67 & 642.15 & ... \\
-1  & 3     & -0.0043  & 0.0003   & 100.0    & 518.67 & 642.35 & ... \\
+1 & 1   & -0.0007  & -0.0004 & 100.0 & 518.67 & 641.82 & ... \\
+1 & 2   & 0.0019   & -0.0003 & 100.0 & 518.67 & 642.15 & ... \\
+1 & 3   & -0.0043  & 0.0003  & 100.0 & 518.67 & 642.35 & ... \\
+... & ... & & & &  & & ... \\
+1 & 191 & 0        & -0.0004 & 100.0 & 518.67 & 643.34 & ... \\
+1 & 192 & 0.0009   & 0       & 100.0 & 518.67 & 643.54 & ... \\
+2 & 1   & -0.0018  & 0.0006  & 100.0 & 518.67 & 641.89 & ... \\
+2 & 2   & 0.0009   & -0.0003 & 100.0 & 518.67 & 641.82 & ... \\
+2 & 3   & 0.0018   & 0.0003  & 100.0 & 518.67 & 641.55 & ... \\
+... & ... & & & &  & & ... \\
 \bottomrule\\
 \end{tabular}
 \end{table}
@@ -67,9 +74,49 @@ The only difference is that the data does not indicate when the failure occurs (
 Taking the sample testing data shown in the following table as an example, the engine with id=1 runs from cycle 1 through cycle 31.
 It is not shown how many more cycles this engine can last before it fails.
 
+\begin{table}
+\caption{Test Data}
+\label{tab:test-data}
+\centering
+\begin{tabular}{l l l l l l l l l }
+\toprule
+\tabhead{Id} & \tabhead{Cycle} & \tabhead{Setting 1} & \tabhead{Setting 2} & \tabhead{S1} & \tabhead{S2} & \tabhead{S3} & \tabhead{...} \\
+\midrule
+1 & 1  & 0.0023   & 0.0003  & 100.0 & 518.67 & 643.02 & ... \\
+1 & 2  & -0.0027  & -0.0003 & 100.0 & 518.67 & 641.71 & ... \\
+1 & 3  & 0.0003   & 0.0001  & 100.0 & 518.67 & 642.46 & ... \\
+... & ... & & & &  & & ... \\
+1 & 30 & -0.0025  & 0.0004  & 100.0 & 518.67 & 642.79 & ... \\
+1 & 31 & -0.0006  & 0.0004  & 100.0 & 518.67 & 642.58 & ... \\
+2 & 1  & -0.0009  & 0.0006  & 100.0 & 518.67 & 641.89 & ... \\
+2 & 2  & -0.0011  & 0.0002  & 100.0 & 518.67 & 642.51 & ... \\
+2 & 3  & 0.0002   & 0.0003  & 100.0 & 518.67 & 642.58 & ... \\
+... & ... & & & &  & & ... \\
+\bottomrule\\
+\end{tabular}
+\end{table}
+
 \subsection{Ground truth data}\label{subsec:ground-truth-data}
 The ground truth data provides the number of remaining working cycles for the engines in the testing data.
 Taking the sample ground truth data shown in the following table as an example, the engine with id=1 in the testing data can run another 112 cycles before it fails.
+
+\begin{table}
+\caption{Ground Truth Data}
+\label{tab:ground-truth-data}
+\centering
+\begin{tabular}{l}
+\toprule
+\tabhead{RUL} \\
+\midrule
+112 \\
+98 \\
+69 \\
+82 \\
+91 \\
+... \\
+\bottomrule\\
+\end{tabular}
+\end{table}
 
 %----------------------------------------------------------------------------------------
 
