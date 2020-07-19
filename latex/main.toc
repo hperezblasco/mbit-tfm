@@ -17,6 +17,11 @@
 \contentsline {subsection}{\numberline {3.1.1}Remaining Useful Life}{7}{subsection.23}
 \contentsline {subsection}{\numberline {3.1.2}Failure Cycle Window}{7}{subsection.25}
 \contentsline {section}{\numberline {3.2}Feature Engineering and Normalization}{8}{section.27}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{9}{appendix.28}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{9}{section.29}
-\contentsline {chapter}{Bibliography}{11}{appendix*.30}
+\contentsline {chapter}{\numberline {4}Long Short-Term Memory}{11}{chapter.29}
+\contentsline {section}{\numberline {4.1}Understanding LSTMs}{11}{section.30}
+\contentsline {section}{\numberline {4.2}Binary Classification}{11}{section.32}
+\contentsline {subsection}{\numberline {4.2.1}Data Generation}{11}{subsection.33}
+\contentsline {subsection}{\numberline {4.2.2}Model definition}{12}{subsection.34}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{13}{appendix.35}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{13}{section.36}
+\contentsline {chapter}{Bibliography}{15}{appendix*.37}

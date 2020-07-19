@@ -23,7 +23,7 @@ Two different labels must be generated for each question we want to answer:
 %-----------------------------------
 \subsection{Remaining Useful Life}
 
-In order to face the regression model to answer the question how many more cycles an in-service engine will last before it fails? each entrance of the train dataset must include the number of remaining cycles until the aircraft fails.
+In order to face the regression model to answer the question \textit{how many more cycles an in-service engine will last before it fails?} each entrance of the train dataset must include the number of remaining cycles until the aircraft fails.
 
 This way, all the rows associated with the same aircraft identifier will have a decreasing number for this field. In the last step, where the cycle number represents the moment the aircraft fails, the RUL must be 0. See table \ref{tab:training-data-rul}
 
@@ -55,7 +55,7 @@ This way, all the rows associated with the same aircraft identifier will have a 
 
 \subsection{Failure Cycle Window}
 
-In the case of the binary classification model, the question to answer is Is this engine going to fail within w1 cycles?.
+In the case of the binary classification model, the question to answer is \textit{is this engine going to fail within w1 cycles?}.
 
 The w1 represents the window of cycles that we want to take in account to classify. In this dissertation the number of cycles will be set to 30.
 
@@ -89,9 +89,42 @@ Along with the RUL, it is possible to generate a label (label1) for each entranc
 
 \section{Feature Engineering and Normalization}
 
-The information of the aircraft for each timestep is formed by 21 differente sensor numerical values.
+The information of the aircraft for each time step is formed by 21 different sensor and 3 setting numerical values.
+The distribution of this values is shown in the figure \ref{fig:data-distribution}.
 
-The distribution of this values is shown in the next tables.
+The data distribution shows that most of the sensor data follows a gaussian distribution, avoiding the existence of outliers. With this premise and also taking in account that some of the value ranges can take negative values, the normalization method chosen is min max scaler.
 
-Based on these distributions, the data for the sensor will be normalized using the MinMax approach (all values will be in the range 0 - 1).
+Min max scaler normalization transforms the values in the distribution to the range [0-1]. This normalization is required to avoid the network to priorize on features with higher values and also to avoid exploding gradient problems.
 
+\begin{figure}
+    \includegraphics[width=.24\textwidth]{Figures/s1}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s2}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s3}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s4}
+    \\[\smallskipamount]
+    \includegraphics[width=.24\textwidth]{Figures/s5}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s6}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s7}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s8}
+    \\[\smallskipamount]
+    \includegraphics[width=.24\textwidth]{Figures/s9}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s10}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s11}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s12}
+    \\[\smallskipamount]
+    \includegraphics[width=.24\textwidth]{Figures/s13}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s14}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s15}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s16}
+    \\[\smallskipamount]
+    \includegraphics[width=.24\textwidth]{Figures/s17}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s18}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s19}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/s20}
+    \\[\smallskipamount]
+    \includegraphics[width=.24\textwidth]{Figures/s21}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/setting1}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/setting2}\hfill
+    \includegraphics[width=.24\textwidth]{Figures/setting3}
+    \caption{Sensor data distribution}\label{fig:data-distribution}
+\end{figure}
