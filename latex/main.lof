@@ -6,4 +6,16 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Sensor data distribution\relax }}{9}{figure.caption.28}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces LSTM architecture}}{11}{figure.caption.31}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Neural Network model for binary classification}}{13}{figure.caption.35}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces PCA applied over LSTM output}}{14}{figure.caption.37}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Binary Classification Model Loss}}{15}{figure.caption.39}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Binary Classification Model Accuracy}}{16}{figure.caption.40}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Result comparison between Binary LSTM Model and Ground Truth data}}{17}{figure.caption.41}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Neural Network for regression model}}{19}{figure.caption.45}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Regression Model Loss}}{20}{figure.caption.47}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces R2 model}}{21}{figure.caption.48}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces MAE model}}{22}{figure.caption.49}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Result comparison between Regression LSTM Model and Ground Truth data}}{23}{figure.caption.50}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces GRU architecture}}{26}{figure.caption.53}
 \addvspace {10\p@ }
