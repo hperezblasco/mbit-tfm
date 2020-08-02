@@ -14,7 +14,7 @@ Gated recurrent units (GRUs) are a gating mechanism in recurrent neural networks
 
 The GRU is like a long short-term memory (LSTM) with a forget gate but has fewer parameters than LSTM, as it lacks an output gate.
 
-An scheme of a LSTM architecture is described in figure \ref{fig:gru}.
+An scheme of a GRU architecture is described in figure \ref{fig:gru}.
 
 \begin{figure}
 \begin{center}
@@ -33,7 +33,7 @@ The next sections describe the methodology applied to solve the binary classific
 
 Before the ingestion of the data into the GRU model, it has to be adapted to the architecture of the network.
 
-Being \textit{samples} the total number of data, \textit{timesteps} the amount of rows to be ingested for each aircraft and \textit{features} the number of sensor data the input of the LSTM layer is defined by a tensor of shape:
+Being \textit{samples} the total number of data, \textit{timesteps} the amount of rows to be ingested for each aircraft and \textit{features} the number of sensor data the input of the GRU layer is defined by a tensor of shape:
 
 \begin{verbatim}
     (samples, timesteps, features)
@@ -70,86 +70,80 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-As explained above, the architecture of the neural network is based on the use of LSTM layers. In this model two different LSTM layers are used to achieve better results.
+This model is based on the previous one that focuses on the use of LSTM layers. This time the same architecture, loss and activation functions are used but all the LSTM layers are switched by GRU layers.
 
-To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value. This value classifies between two different options: the aircraft will fail or not within the specified cycle.
+Instead of adding Dropout layers, the dropout field provided by the Keras API implementation of the GRU layers is used.
 
-To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers. This adds a regularization method that drops random units after the LSTM layers, avoiding the network to learn interdependent set of feature weights.
+The diagram for the neural network is described in figure \ref{fig:binary-gru-model}
 
-Finally, the loss function selected for this kind of classification problem is \textit{binary crossentropy} using \textit{Adam} as optimizer.
-
-The diagram for the neural network is described in figure \ref{fig:binary-lstm-model}
-
-%\begin{figure}
-%\centering
-%\includegraphics{Figures/binary-lstm-model}
-%\decoRule
-%\caption[Neural Network model for binary classification]{Neural Network model for binary classification.}
-%\label{fig:binary-lstm-model}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics{Figures/binary-gru-model}
+\decoRule
+\caption[GRU Neural Network model for binary classification]{GRU Neural Network model for binary classification.}
+\label{fig:binary-gru-model}
+\end{figure}
 
 \subsection{Training visualization}
 
-Visualizing the output of the different layers of a network is one of the most useful tools to analyze the network performance. It could also help us to determine if the data analysis has been done correctly and allow us to see possible biases over the data distribution.
+As done in the previous model, the output of the second RNN layer has been visualized. In this case the second GRU layer is the one selected. The output of this layer is a tensor of size 50, which represents the hidden units of the GRU. To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
 
-For the current network, the output of the last LSTM layer has been taken in account to do this analysis. The output of this layer is a tensor of size 50, which represents the hidden units of the LSTM. To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
+In figure \ref{fig:binary-gru-pca} you can see a graphical representation of this components.
 
-PCA is a mathematical function that allows us to summarize huge features sets. For this dissertation, two principal components has been configured. In figure \ref{fig:binary-lstm-pca} you can see a graphical representation of this components.
+As happened with the LSTM model, two separated clusters can be seen in the image. This follows to the same conclusion, the data tends to split into two different options: the aircraft fails in a cycle or it doesn't.
 
-In this figure we can clearly see how the values conforms to main clusters of data. This has a lot of sense since we are trying to classify the data in two different groups.
-
-%\begin{figure}
-%\centering
-%\includegraphics{Figures/lstm-visualization}
-%\decoRule
-%\caption[PCA applied over LSTM output]{PCA applied over LSTM output.}
-%\label{fig:binary-lstm-pca}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics{Figures/gru-visualization}
+\decoRule
+\caption[PCA applied over GRU output]{PCA applied over GRU output.}
+\label{fig:binary-gru-pca}
+\end{figure}
 
 
 \subsection{Results and model evaluation}
 
 After the model is trained using batches of data of size 200. The validation split selected for the data is 5\%.
 
-The evolution of the loss and accuracy during the model training can be seen in the figures \ref{fig:binary-lstm-loss} and \ref{fig:binary-lstm-acc}
+The evolution of the loss and accuracy during the model training can be seen in the figures \ref{fig:binary-gru-loss} and \ref{fig:binary-gru-acc}
 
-The final accuracy obtained is 98\% so we can conclude that the network works very well for this task. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:binary-lstm-results}.
+The final accuracy obtained is 97\% so we can conclude that the network works very well for this task. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:binary-gru-results}.
 
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-loss}}
-%\end{center}
-%\decoRule
-%\caption[Binary Classification Model Loss]{Binary Classification Model Loss.}
-%\label{fig:binary-lstm-loss}\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-acc}}
-%\end{center}
-%\decoRule
-%\caption[Binary Classification Model Accuracy]{Binary Classification Model Accuracy.}
-%\label{fig:binary-lstm-acc}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-results}}
-%\end{center}
-%\decoRule
-%\caption[Result comparison between Binary LSTM Model and Ground Truth data]{Result comparison between Binary LSTM Model and Ground Truth data.}
-%\label{fig:binary-lstm-results}
-%\end{figure}
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-loss}}
+\end{center}
+\decoRule
+\caption[GRU Binary Classification Model Loss]{GRU Binary Classification Model Loss.}
+\label{fig:binary-gru-loss}\end{figure}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-acc}}
+\end{center}
+\decoRule
+\caption[GRU Binary Classification Model Accuracy]{GRU Binary Classification Model Accuracy.}
+\label{fig:binary-gru-acc}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-results}}
+\end{center}
+\decoRule
+\caption[Result comparison between Binary GRU Model and Ground Truth data]{Result comparison between Binary GRU Model and Ground Truth data.}
+\label{fig:binary-gru-results}
+\end{figure}
 
 
 \section{Regression Model}
 
-The next sections describe the methodology applied to solve the regression problem using LSTMs
+The next sections describe the methodology applied to solve the regression problem using GRUs
 
 
 \subsection{Data Generation}
 
-Before the ingestion of the data into the LSTM model, it has to be adapted to the architecture of the network.
+Before the ingestion of the data into the GRU model, it has to be adapted to the architecture of the network.
 
 Being \textit{samples} the total number of data, \textit{timesteps} the amount of rows to be ingested for each aircraft and \textit{features} the number of sensor data the input of the LSTM layer is defined by a tensor of shape:
 
@@ -185,65 +179,59 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-As explained above, the architecture of the neural network is based on the use of LSTM layers. In this model two different LSTM layers are used to achieve better results.
+Like the binary one, this model has been created just replacing the LSTMs layers used in the previous chapter with GRU layers. The rest of the components of the model remain the same.
 
-To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value. This linear value is generated by the network output and represents the \textit{RUL} that the network calculates for an especific aircraft. Finally, an linear activation function is added to the last layer.
+As a point, it is interesting to notice that in order to make the model converge, especific Dropout layers has been used instead that the features provided by the GRU layer API.
 
-To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers. This adds a regularization method that drops random units after the LSTM layers, avoiding the network to learn interdependent set of feature weights.
+The diagram for the neural network is described in figure \ref{fig:regression_gru-model}
 
-The loss function selected for this kind of classification problem is \textit{binary crossentropy} using \textit{RMSProp} as optimizer.
-
-For the regression model the metric used is \textit{MAE}, also, in this dissertation the \textit{Coefficient of Determination} (R squared) metric function has been implemented.
-
-The diagram for the neural network is described in figure \ref{fig:binary-lstm-model}
-
-%\begin{figure}
-%\centering
-%\includegraphics{Figures/regression-lstm-model}
-%\decoRule
-%\caption[Neural Network for regression model]{Neural Network for regression model.}
-%\label{fig:regression-lstm-model}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics{Figures/regression-gru-model}
+\decoRule
+\caption[Neural Network for GRU regression model]{Neural Network for GRU regression model.}
+\label{fig:regression-gru-model}
+\end{figure}
 
 \subsection{Results and model evaluation}
 
 After the model is trained using batches of data of size 200. The validation split selected for the data is 5\%.
 
-The evolution of the loss and metrics during the model training can be seen in the figures \ref{fig:regression-lstm-loss}, \ref{fig:regression-lstm-r2} and \ref{fig:regression-lstm-mae}
+The evolution of the loss and metrics during the model training can be seen in the figures \ref{fig:regression-gru-loss}, \ref{fig:regression-gru-r2} and \ref{fig:regression-gru-mae}
 
-The final results obtained for \textit{MAE} and \textit{R-square} are 11.93 and 0.81 respectively.To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-lstm-results}.
+The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 0.81 respectively. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-gru-results}.
 
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-loss}}
-%\end{center}
-%\decoRule
-%\caption[Regression Model Loss]{Regression Model Loss.}
-%\label{fig:regression-lstm-loss}\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-r2}}
-%\end{center}
-%\decoRule
-%\caption[R2 model]{R2 model.}
-%\label{fig:regression-lstm-r2}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-mae}}
-%\end{center}
-%\decoRule
-%\caption[MAE model]{MAE model.}
-%\label{fig:regression-lstm-mae}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-results}}
-%\end{center}
-%\decoRule
-%\caption[Result comparison between Regression LSTM Model and Ground Truth data]{Result comparison between Regression LSTM Model and Ground Truth data.}
-%\label{fig:regression-lstm-results}
-%\end{figure}
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-loss}}
+\end{center}
+\decoRule
+\caption[GRU Regression Model Loss]{GRU Regression Model Loss.}
+\label{fig:regression-gru-loss}\end{figure}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-r2}}
+\end{center}
+\decoRule
+\caption[GRU R2 model]{GRU R2 model.}
+\label{fig:regression-gru-r2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-mae}}
+\end{center}
+\decoRule
+\caption[GRU MAE model]{GRU MAE model.}
+\label{fig:regression-gru-mae}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-results}}
+\end{center}
+\decoRule
+\caption[Result comparison between Regression GRU Model and Ground Truth data]{Result comparison between Regression GRU Model and Ground Truth data.}
+\label{fig:regression-gru-results}
+\end{figure}
