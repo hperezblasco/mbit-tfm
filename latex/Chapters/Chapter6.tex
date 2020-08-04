@@ -1,0 +1,45 @@
+% Chapter Template
+
+\chapter{Conclusions} % Main chapter title
+
+\label{Chapter6} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Recurrent Neural Networks For Predictive Maintenance}
+
+As shown in the results obtained by the different models implemented in this dissertation, it can be concluded that RNNs are a very good solution to solve predictive maintenance problems using machine learning.
+
+Both models (LSTM and GRU) have accuracy results higher that 97\% for predicting if an aircraft is going to fail in defined number of cycles.
+
+Also, both solutions work very well to predict the number of remaining cycles that an aircraft is able to operate without failing. A comparison of the results with the ground truth data can be seen in figures \ref{fig:binary-lstm-results} and \ref{fig:binary-gru-results}.
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{LSTM vs GRU}
+
+There are no great differences between the use of LSTM or GRU layers.
+The results are almost the same in both cases.
+
+Also, the implementation costs using libraries like Tensorflow and Keras are disposable in terms of time or complexity.
+
+The implementation of the GRU layer by Keras add more parameter configuration, like adding straight the dropout regularization without adding any extra layers.
+
+On the other hand using GRU layers instead of LSTM adds a bit more cost concerning performance on the training phase, being the LSTM model a bit more faster.
+
+Also the LSTM model tends to resolve earlier using \textit{Early Stopping} callbacks provided by the Keras API.
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\subsection{Future steps}
+
+Currently, most of the traditional RNN models are moving to use \textit{Transformer} architectures with \textit{Attention layers}.
+
+This kind of architectures are often used in NLP translation problems, but their applicability on time series data is something to take in account.
+
+Applying this kind of architectures in predictive maintenance problems is a logic future step for this dissertation.

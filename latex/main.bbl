@@ -17,6 +17,56 @@
 \endgroup
 
 \datalist[entry]{nyt/global//global/global}
+  \entry{Reference5}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=CK}{%
+         family={Cho},
+         familyi={C\bibinitperiod},
+         given={Kyunghyun},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CK1}
+    \strng{fullhash}{CK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{year}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Learning Phrase Representations using RNN Encoder–Decoder
+  for Statistical Machine Translation}
+    \verb{url}
+    \verb https://arxiv.org/pdf/1406.1078v3.pdf
+    \endverb
+    \field{month}{09}
+    \field{year}{2015}
+  \endentry
+
+  \entry{Reference6}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CF}{%
+         family={Chollet},
+         familyi={C\bibinitperiod},
+         given={François},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Manning}%
+    }
+    \strng{namehash}{CF1}
+    \strng{fullhash}{CF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{year}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Deep Learning With Python}
+    \field{year}{2018}
+  \endentry
+
   \entry{Reference2}{misc}{}
     \name{author}{1}{}{%
       {{hash=FBAA}{%
@@ -89,6 +139,26 @@
     \verb -3-train-and-evaluate-regression-models-2
     \endverb
     \field{month}{04}
+    \field{year}{2015}
+    \field{urlday}{01}
+    \field{urlmonth}{07}
+    \field{urlyear}{2020}
+  \endentry
+
+  \entry{Reference4}{misc}{}
+    \list{organization}{1}{%
+      {Colah's Blog}%
+    }
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{year}
+    \field{sortinit}{U}
+    \field{sortinithash}{U}
+    \field{title}{Understanding LSTMs}
+    \verb{url}
+    \verb https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+    \endverb
+    \field{month}{08}
     \field{year}{2015}
     \field{urlday}{01}
     \field{urlmonth}{07}

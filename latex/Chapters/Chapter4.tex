@@ -16,7 +16,7 @@ LSTMs are explicitly designed to avoid the long-term dependency problem. This al
 
 All recurrent neural networks have the form of a chain of repeating modules of neural network. But the core of the LSTMs is the \textit{cell state}, that allows the network to keep a simple state information through the processing of all the time steps in the chain. An scheme of a LSTM architecture is described in figure \ref{fig:lstm}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/LSTM}}
 \end{center}
@@ -83,11 +83,11 @@ Finally, the loss function selected for this kind of classification problem is \
 
 The diagram for the neural network is described in figure \ref{fig:binary-lstm-model}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{Figures/binary-lstm-model}
+\includegraphics[scale=0.5]{Figures/binary-lstm-model}
 \decoRule
-\caption[Neural Network model for binary classification]{Neural Network model for binary classification.}
+\caption[Neural Network model for LSTM binary classification]{Neural Network model for LSTM binary classification.}
 \label{fig:binary-lstm-model}
 \end{figure}
 
@@ -101,7 +101,7 @@ PCA is a mathematical function that allows us to summarize huge features sets. F
 
 In this figure we can clearly see how the values conforms to main clusters of data. This has a lot of sense since we are trying to classify the data in two different groups.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics{Figures/lstm-visualization}
 \decoRule
@@ -118,24 +118,24 @@ The evolution of the loss and accuracy during the model training can be seen in 
 
 The final accuracy obtained is 98\% so we can conclude that the network works very well for this task. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:binary-lstm-results}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-loss}}
 \end{center}
 \decoRule
-\caption[Binary Classification Model Loss]{Binary Classification Model Loss.}
+\caption[LSTM Binary Classification Model Loss]{LSTM Binary Classification Model Loss.}
 \label{fig:binary-lstm-loss}\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-acc}}
 \end{center}
 \decoRule
-\caption[Binary Classification Model Accuracy]{Binary Classification Model Accuracy.}
+\caption[LSTM Binary Classification Model Accuracy]{LSTM Binary Classification Model Accuracy.}
 \label{fig:binary-lstm-acc}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-lstm-results}}
 \end{center}
@@ -200,11 +200,11 @@ For the regression model the metric used is \textit{MAE}, also, in this disserta
 
 The diagram for the neural network is described in figure \ref{fig:regression-lstm-model}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{Figures/regression-lstm-model}
+\includegraphics[scale=0.5]{Figures/regression-lstm-model}
 \decoRule
-\caption[Neural Network for regression model]{Neural Network for regression model.}
+\caption[LSTM Neural Network for regression model]{LSTM Neural Network for regression model.}
 \label{fig:regression-lstm-model}
 \end{figure}
 
@@ -216,33 +216,33 @@ The evolution of the loss and metrics during the model training can be seen in t
 
 The final results obtained for \textit{MAE} and \textit{R-square} are 11.93 and 0.81 respectively.To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-lstm-results}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-loss}}
 \end{center}
 \decoRule
-\caption[Regression Model Loss]{Regression Model Loss.}
+\caption[LSTM Regression Model Loss]{LSTM Regression Model Loss.}
 \label{fig:regression-lstm-loss}\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-r2}}
 \end{center}
 \decoRule
-\caption[R2 model]{R2 model.}
+\caption[LSTM R2 model]{LSTM R2 model.}
 \label{fig:regression-lstm-r2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-mae}}
 \end{center}
 \decoRule
-\caption[MAE model]{MAE model.}
+\caption[LSTM MAE model]{LSTM MAE model.}
 \label{fig:regression-lstm-mae}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-lstm-results}}
 \end{center}

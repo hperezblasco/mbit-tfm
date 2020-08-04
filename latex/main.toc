@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.1}Problem Description}{1}{section.8}
 \contentsline {section}{\numberline {1.2}Data Summary}{1}{section.9}
 \contentsline {subsection}{\numberline {1.2.1}Training data}{1}{subsection.10}
-\contentsline {subsection}{\numberline {1.2.2}Text data}{1}{subsection.12}
+\contentsline {subsection}{\numberline {1.2.2}Test data}{1}{subsection.12}
 \contentsline {subsection}{\numberline {1.2.3}Ground truth data}{3}{subsection.14}
 \contentsline {section}{\numberline {1.3}Dissertation goals}{3}{section.16}
 \contentsline {chapter}{\numberline {2}Methodology and Techniques}{5}{chapter.17}
@@ -22,23 +22,28 @@
 \contentsline {section}{\numberline {4.2}Binary Classification}{11}{section.32}
 \contentsline {subsection}{\numberline {4.2.1}Data Generation}{11}{subsection.33}
 \contentsline {subsection}{\numberline {4.2.2}Model definition}{12}{subsection.34}
-\contentsline {subsection}{\numberline {4.2.3}Training visualization}{12}{subsection.36}
+\contentsline {subsection}{\numberline {4.2.3}Training visualization}{13}{subsection.36}
 \contentsline {subsection}{\numberline {4.2.4}Results and model evaluation}{14}{subsection.38}
-\contentsline {section}{\numberline {4.3}Regression Model}{14}{section.42}
-\contentsline {subsection}{\numberline {4.3.1}Data Generation}{14}{subsection.43}
+\contentsline {section}{\numberline {4.3}Regression Model}{17}{section.42}
+\contentsline {subsection}{\numberline {4.3.1}Data Generation}{17}{subsection.43}
 \contentsline {subsection}{\numberline {4.3.2}Model definition}{18}{subsection.44}
-\contentsline {subsection}{\numberline {4.3.3}Results and model evaluation}{18}{subsection.46}
-\contentsline {chapter}{\numberline {5}Graded Recurrent Unit}{25}{chapter.51}
+\contentsline {subsection}{\numberline {4.3.3}Results and model evaluation}{19}{subsection.46}
+\contentsline {chapter}{\numberline {5}Gated Recurrent Unit}{25}{chapter.51}
 \contentsline {section}{\numberline {5.1}Understanding GRUs}{25}{section.52}
 \contentsline {section}{\numberline {5.2}Binary Classification}{25}{section.54}
 \contentsline {subsection}{\numberline {5.2.1}Data Generation}{25}{subsection.55}
 \contentsline {subsection}{\numberline {5.2.2}Model definition}{26}{subsection.56}
-\contentsline {subsection}{\numberline {5.2.3}Training visualization}{26}{subsection.58}
-\contentsline {subsection}{\numberline {5.2.4}Results and model evaluation}{26}{subsection.60}
-\contentsline {section}{\numberline {5.3}Regression Model}{28}{section.64}
-\contentsline {subsection}{\numberline {5.3.1}Data Generation}{28}{subsection.65}
+\contentsline {subsection}{\numberline {5.2.3}Training visualization}{27}{subsection.58}
+\contentsline {subsection}{\numberline {5.2.4}Results and model evaluation}{27}{subsection.60}
+\contentsline {section}{\numberline {5.3}Regression Model}{30}{section.64}
+\contentsline {subsection}{\numberline {5.3.1}Data Generation}{30}{subsection.65}
 \contentsline {subsection}{\numberline {5.3.2}Model definition}{31}{subsection.66}
 \contentsline {subsection}{\numberline {5.3.3}Results and model evaluation}{31}{subsection.68}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{37}{appendix.73}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{37}{section.74}
-\contentsline {chapter}{Bibliography}{39}{appendix*.75}
+\contentsline {chapter}{\numberline {6}Conclusions}{37}{chapter.73}
+\contentsline {section}{\numberline {6.1}Recurrent Neural Networks For Predictive Maintenance}{37}{section.74}
+\contentsline {subsection}{\numberline {6.1.1}LSTM vs GRU}{37}{subsection.75}
+\contentsline {subsection}{\numberline {6.1.2}Future steps}{37}{subsection.76}
+\contentsline {chapter}{\numberline {A}Code And Templates}{39}{appendix.77}
+\contentsline {section}{\numberline {A.1}Source code}{39}{section.78}
+\contentsline {section}{\numberline {A.2}Template}{39}{section.79}
+\contentsline {chapter}{Bibliography}{41}{appendix*.80}

@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Graded Recurrent Unit} % Main chapter title
+\chapter{Gated Recurrent Unit} % Main chapter title
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -12,11 +12,11 @@
 
 Gated recurrent units (GRUs) are a gating mechanism in recurrent neural networks, introduced in 2014 by Kyunghyun Cho et al \citation{Reference5}.
 
-The GRU is like a long short-term memory (LSTM) with a forget gate but has fewer parameters than LSTM, as it lacks an output gate.
+The GRU is like a LSTM with a forget gate but has fewer parameters than LSTM, as it lacks an output gate.
 
 An scheme of a GRU architecture is described in figure \ref{fig:gru}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/GRU}}
 \end{center}
@@ -76,9 +76,9 @@ Instead of adding Dropout layers, the dropout field provided by the Keras API im
 
 The diagram for the neural network is described in figure \ref{fig:binary-gru-model}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{Figures/binary-gru-model}
+\includegraphics[scale=0.5]{Figures/binary-gru-model}
 \decoRule
 \caption[GRU Neural Network model for binary classification]{GRU Neural Network model for binary classification.}
 \label{fig:binary-gru-model}
@@ -92,7 +92,7 @@ In figure \ref{fig:binary-gru-pca} you can see a graphical representation of thi
 
 As happened with the LSTM model, two separated clusters can be seen in the image. This follows to the same conclusion, the data tends to split into two different options: the aircraft fails in a cycle or it doesn't.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics{Figures/gru-visualization}
 \decoRule
@@ -109,7 +109,7 @@ The evolution of the loss and accuracy during the model training can be seen in 
 
 The final accuracy obtained is 97\% so we can conclude that the network works very well for this task. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:binary-gru-results}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-loss}}
 \end{center}
@@ -117,7 +117,7 @@ The final accuracy obtained is 97\% so we can conclude that the network works ve
 \caption[GRU Binary Classification Model Loss]{GRU Binary Classification Model Loss.}
 \label{fig:binary-gru-loss}\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-acc}}
 \end{center}
@@ -126,7 +126,7 @@ The final accuracy obtained is 97\% so we can conclude that the network works ve
 \label{fig:binary-gru-acc}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/binary-gru-results}}
 \end{center}
@@ -183,11 +183,11 @@ Like the binary one, this model has been created just replacing the LSTMs layers
 
 As a point, it is interesting to notice that in order to make the model converge, especific Dropout layers has been used instead that the features provided by the GRU layer API.
 
-The diagram for the neural network is described in figure \ref{fig:regression_gru-model}
+The diagram for the neural network is described in figure \ref{fig:regression-gru-model}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{Figures/regression-gru-model}
+\includegraphics[scale=0.5]{Figures/regression-gru-model}
 \decoRule
 \caption[Neural Network for GRU regression model]{Neural Network for GRU regression model.}
 \label{fig:regression-gru-model}
@@ -201,7 +201,7 @@ The evolution of the loss and metrics during the model training can be seen in t
 
 The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 0.81 respectively. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-gru-results}.
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-loss}}
 \end{center}
@@ -209,7 +209,7 @@ The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 
 \caption[GRU Regression Model Loss]{GRU Regression Model Loss.}
 \label{fig:regression-gru-loss}\end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-r2}}
 \end{center}
@@ -218,7 +218,7 @@ The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 
 \label{fig:regression-gru-r2}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-mae}}
 \end{center}
@@ -227,7 +227,7 @@ The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 
 \label{fig:regression-gru-mae}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=\textwidth]{Figures/regression-gru-results}}
 \end{center}

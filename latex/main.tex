@@ -50,6 +50,8 @@ headsepline, % Uncomment to get a line under the header
 \usepackage[autostyle=true]{csquotes}
 \usepackage{hyperref} % Required to generate language-dependent quotes in the bibliography
 
+\usepackage{float}
+
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -140,51 +142,15 @@ headsepline, % Uncomment to get a line under the header
 \end{titlepage}
 
 %----------------------------------------------------------------------------------------
-%	DECLARATION PAGE
-%----------------------------------------------------------------------------------------
-
-%\begin{declaration}
-%\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
-%\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
-%
-%\begin{itemize}
-%\item This work was done wholly or mainly while in candidature for a research degree at this University.
-%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-%\item Where I have consulted the published work of others, this is always clearly attributed.
-%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-%\item I have acknowledged all main sources of help.
-%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-%\end{itemize}
-%
-%\noindent Signed:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-%
-%\noindent Date:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-%\end{declaration}
-%
-%\cleardoublepage
-
-%----------------------------------------------------------------------------------------
-%	QUOTATION PAGE
-%----------------------------------------------------------------------------------------
-
-%\vspace*{0.2\textheight}
-%
-%\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
-%
-%\hfill Dave Barry
-
-%----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-Predictive maintenance encompasses a variety of topics, including but not limited to: failure prediction, failure diagnosis (root cause analysis), failure detection, failure type classification, and recommendation of mitigation or maintenance actions after failure \parencite{Reference1}.
+Predictive maintenance encompasses a variety of topics, including but not limited to: failure prediction, failure diagnosis (root cause analysis), failure detection, failure type classification, and recommendation of mitigation or maintenance actions after failure.
 
-Predictive Maintenance is also a domain where data is collected over time to monitor the state of an asset with the goal of finding patterns to predict failures which can also benefit from certain deep learning algorithms \parencite{Reference2}.
-This study uses simulated aircraft sensor values to predict when an aircraft engine will fail in the future so that maintenance can be planned in advance \parencite{Reference3}.
+Predictive Maintenance is also a domain where data is collected over time to monitor the state of an asset with the goal of finding patterns to predict failures which can also benefit from certain deep learning algorithms.
+This study uses simulated aircraft sensor values to predict when an aircraft engine will fail in the future so that maintenance can be planned in advance.
 
 The goal of this dissertation if to do a trade-off over the different deep learning architectures and models that compound the current state of the art concerning the prediction and classification over time series data.
 \end{abstract}
@@ -216,43 +182,12 @@ The goal of this dissertation if to do a trade-off over the different deep learn
 
 \textbf{RUL} & \textbf{R}emaining \textbf{U}seful \textbf{L}ife\\
 \textbf{RNN} & \textbf{R}ecurrent \textbf{N}eural \textbf{N}etwork\\
+\textbf{LSTM} & \textbf{L}ong \textbf{S}hort \textbf{T}erm \textbf{M}emory\\
+\textbf{GRU} & \textbf{G}ated \textbf{R}ecurrent \textbf{U}nit\\
+\textbf{MAE} & \textbf{M}ean \textbf{A}bsolut \textbf{E}rror\\
+\textbf{PCA} & \textbf{P}rincipal \textbf{C}omponent \textbf{A}nalysis\\
 
 \end{abbreviations}
-
-%----------------------------------------------------------------------------------------
-%	PHYSICAL CONSTANTS/OTHER DEFINITIONS
-%----------------------------------------------------------------------------------------
-
-%\begin{constants}{lr@{${}={}$}l} % The list of physical constants is a three column table
-
-% The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-
-%Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
-%Constant Name & $Symbol$ & $Constant Value$ with units\\
-
-%\end{constants}
-
-%----------------------------------------------------------------------------------------
-%	SYMBOLS
-%----------------------------------------------------------------------------------------
-
-%\begin{symbols}{lll} % Include a list of Symbols (a three column table)
-
-%$a$ & distance & \si{\meter} \\
-%$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
-%Symbol & Name & Unit \\
-
-%\addlinespace % Gap to separate the Roman symbols from the Greek
-
-%$\omega$ & angular frequency & \si{\radian} \\
-
-%\end{symbols}
-
-%----------------------------------------------------------------------------------------
-%	DEDICATION
-%----------------------------------------------------------------------------------------
-
-%\dedicatory{For/Dedicated to/To my\ldots}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -270,6 +205,7 @@ The goal of this dissertation if to do a trade-off over the different deep learn
 \input{Chapters/Chapter3}
 \input{Chapters/Chapter4}
 \input{Chapters/Chapter5}
+\input{Chapters/Chapter6}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
@@ -281,13 +217,12 @@ The goal of this dissertation if to do a trade-off over the different deep learn
 % Uncomment the lines as you write the Appendices
 
 \input{Appendices/AppendixA}
-%\input{Appendices/AppendixB}
-%\input{Appendices/AppendixC}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
+\nocite{*}
 \printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------
