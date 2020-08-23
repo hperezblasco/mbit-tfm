@@ -1,6 +1,6 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
-\contentsline {chapter}{Abstract}{iii}{section*.1}
+\contentsline {chapter}{Abstract}{i}{section*.1}
 \contentsline {chapter}{\numberline {1}Objectives}{1}{chapter.7}
 \contentsline {section}{\numberline {1.1}Problem Description}{1}{section.8}
 \contentsline {section}{\numberline {1.2}Data Summary}{1}{section.9}
@@ -8,42 +8,42 @@
 \contentsline {subsection}{\numberline {1.2.2}Test data}{1}{subsection.12}
 \contentsline {subsection}{\numberline {1.2.3}Ground truth data}{3}{subsection.14}
 \contentsline {section}{\numberline {1.3}Dissertation goals}{3}{section.16}
-\contentsline {chapter}{\numberline {2}Methodology and Techniques}{5}{chapter.17}
-\contentsline {section}{\numberline {2.1}Deep Learning for sequence processing}{5}{section.18}
-\contentsline {subsection}{\numberline {2.1.1}Study methodology}{5}{subsection.19}
-\contentsline {subsection}{\numberline {2.1.2}Trade-off}{5}{subsection.20}
-\contentsline {chapter}{\numberline {3}Data Analysis and Pre-processing}{7}{chapter.21}
-\contentsline {section}{\numberline {3.1}Data labelling}{7}{section.22}
-\contentsline {subsection}{\numberline {3.1.1}Remaining Useful Life}{7}{subsection.23}
-\contentsline {subsection}{\numberline {3.1.2}Failure Cycle Window}{7}{subsection.25}
-\contentsline {section}{\numberline {3.2}Feature Engineering and Normalization}{8}{section.27}
-\contentsline {chapter}{\numberline {4}Long Short-Term Memory}{11}{chapter.29}
-\contentsline {section}{\numberline {4.1}Understanding LSTMs}{11}{section.30}
-\contentsline {section}{\numberline {4.2}Binary Classification}{11}{section.32}
-\contentsline {subsection}{\numberline {4.2.1}Data Generation}{11}{subsection.33}
-\contentsline {subsection}{\numberline {4.2.2}Model definition}{12}{subsection.34}
-\contentsline {subsection}{\numberline {4.2.3}Training visualization}{13}{subsection.36}
-\contentsline {subsection}{\numberline {4.2.4}Results and model evaluation}{14}{subsection.38}
-\contentsline {section}{\numberline {4.3}Regression Model}{17}{section.42}
-\contentsline {subsection}{\numberline {4.3.1}Data Generation}{17}{subsection.43}
-\contentsline {subsection}{\numberline {4.3.2}Model definition}{18}{subsection.44}
-\contentsline {subsection}{\numberline {4.3.3}Results and model evaluation}{19}{subsection.46}
-\contentsline {chapter}{\numberline {5}Gated Recurrent Unit}{25}{chapter.51}
-\contentsline {section}{\numberline {5.1}Understanding GRUs}{25}{section.52}
-\contentsline {section}{\numberline {5.2}Binary Classification}{25}{section.54}
-\contentsline {subsection}{\numberline {5.2.1}Data Generation}{25}{subsection.55}
-\contentsline {subsection}{\numberline {5.2.2}Model definition}{26}{subsection.56}
-\contentsline {subsection}{\numberline {5.2.3}Training visualization}{27}{subsection.58}
-\contentsline {subsection}{\numberline {5.2.4}Results and model evaluation}{27}{subsection.60}
-\contentsline {section}{\numberline {5.3}Regression Model}{30}{section.64}
-\contentsline {subsection}{\numberline {5.3.1}Data Generation}{30}{subsection.65}
-\contentsline {subsection}{\numberline {5.3.2}Model definition}{31}{subsection.66}
-\contentsline {subsection}{\numberline {5.3.3}Results and model evaluation}{31}{subsection.68}
-\contentsline {chapter}{\numberline {6}Conclusions}{37}{chapter.73}
-\contentsline {section}{\numberline {6.1}Recurrent Neural Networks For Predictive Maintenance}{37}{section.74}
-\contentsline {subsection}{\numberline {6.1.1}LSTM vs GRU}{37}{subsection.75}
-\contentsline {subsection}{\numberline {6.1.2}Future steps}{37}{subsection.76}
-\contentsline {chapter}{\numberline {A}Code And Templates}{39}{appendix.77}
-\contentsline {section}{\numberline {A.1}Source code}{39}{section.78}
-\contentsline {section}{\numberline {A.2}Template}{39}{section.79}
-\contentsline {chapter}{Bibliography}{41}{appendix*.80}
+\contentsline {chapter}{\numberline {2}Methodology and Techniques}{4}{chapter.17}
+\contentsline {section}{\numberline {2.1}Deep Learning for sequence processing}{4}{section.18}
+\contentsline {subsection}{\numberline {2.1.1}Study methodology}{4}{subsection.19}
+\contentsline {subsection}{\numberline {2.1.2}Trade-off}{4}{subsection.20}
+\contentsline {chapter}{\numberline {3}Data Analysis and Pre-processing}{5}{chapter.21}
+\contentsline {section}{\numberline {3.1}Data labelling}{5}{section.22}
+\contentsline {subsection}{\numberline {3.1.1}Remaining Useful Life}{5}{subsection.23}
+\contentsline {subsection}{\numberline {3.1.2}Failure Cycle Window}{5}{subsection.25}
+\contentsline {section}{\numberline {3.2}Feature Engineering and Normalization}{6}{section.27}
+\contentsline {chapter}{\numberline {4}Long Short-Term Memory}{8}{chapter.29}
+\contentsline {section}{\numberline {4.1}Understanding LSTMs}{8}{section.30}
+\contentsline {section}{\numberline {4.2}Binary Classification}{8}{section.32}
+\contentsline {subsection}{\numberline {4.2.1}Data Generation}{8}{subsection.33}
+\contentsline {subsection}{\numberline {4.2.2}Model definition}{9}{subsection.34}
+\contentsline {subsection}{\numberline {4.2.3}Training visualization}{10}{subsection.36}
+\contentsline {subsection}{\numberline {4.2.4}Results and model evaluation}{11}{subsection.38}
+\contentsline {section}{\numberline {4.3}Regression Model}{14}{section.42}
+\contentsline {subsection}{\numberline {4.3.1}Data Generation}{14}{subsection.43}
+\contentsline {subsection}{\numberline {4.3.2}Model definition}{15}{subsection.44}
+\contentsline {subsection}{\numberline {4.3.3}Results and model evaluation}{16}{subsection.46}
+\contentsline {chapter}{\numberline {5}Gated Recurrent Unit}{21}{chapter.51}
+\contentsline {section}{\numberline {5.1}Understanding GRUs}{21}{section.52}
+\contentsline {section}{\numberline {5.2}Binary Classification}{21}{section.54}
+\contentsline {subsection}{\numberline {5.2.1}Data Generation}{21}{subsection.55}
+\contentsline {subsection}{\numberline {5.2.2}Model definition}{22}{subsection.56}
+\contentsline {subsection}{\numberline {5.2.3}Training visualization}{23}{subsection.58}
+\contentsline {subsection}{\numberline {5.2.4}Results and model evaluation}{23}{subsection.60}
+\contentsline {section}{\numberline {5.3}Regression Model}{26}{section.64}
+\contentsline {subsection}{\numberline {5.3.1}Data Generation}{26}{subsection.65}
+\contentsline {subsection}{\numberline {5.3.2}Model definition}{27}{subsection.66}
+\contentsline {subsection}{\numberline {5.3.3}Results and model evaluation}{27}{subsection.68}
+\contentsline {chapter}{\numberline {6}Conclusions}{32}{chapter.73}
+\contentsline {section}{\numberline {6.1}Recurrent Neural Networks For Predictive Maintenance}{32}{section.74}
+\contentsline {subsection}{\numberline {6.1.1}LSTM vs GRU}{32}{subsection.75}
+\contentsline {subsection}{\numberline {6.1.2}Future steps}{32}{subsection.76}
+\contentsline {chapter}{\numberline {A}Code And Templates}{33}{appendix.77}
+\contentsline {section}{\numberline {A.1}Source code}{33}{section.78}
+\contentsline {section}{\numberline {A.2}Template}{33}{section.79}
+\contentsline {chapter}{Bibliography}{34}{appendix*.80}
