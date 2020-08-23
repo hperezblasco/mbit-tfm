@@ -10,11 +10,14 @@
 
 \section{Understanding LSTMs}
 
-Long Short Term Memory networks – usually just called \textit{LSTMs} – are a special kind of RNN, capable of learning long-term dependencies. They were introduced by Hochreiter and Schmidhuber (1997).
+Long Short Term Memory networks – usually just called \textit{LSTMs} – are a special kind of RNN, capable of learning long-term dependencies.
+They were introduced by Hochreiter and Schmidhuber (1997).
 
-LSTMs are explicitly designed to avoid the long-term dependency problem. This allows the network to remember information for long periods of time.
+LSTMs are explicitly designed to avoid the long-term dependency problem.
+This allows the network to remember information for long periods of time.
 
-All recurrent neural networks have the form of a chain of repeating modules of neural network. But the core of the LSTMs is the \textit{cell state}, that allows the network to keep a simple state information through the processing of all the time steps in the chain. An scheme of a LSTM architecture is described in figure \ref{fig:lstm}.
+All recurrent neural networks layers have the form of a chain of repeating cells.
+But the core of the LSTMs is the \textit{cell state}, that allows the network to keep a simple state information through the processing of all the time steps in the chain. An scheme of a LSTM architecture is described in figure \ref{fig:lstm}.
 
 \begin{figure}[H]
 \begin{center}
@@ -42,8 +45,9 @@ Being \textit{samples} the total number of data, \textit{timesteps} the amount o
     (samples, timesteps, features)
 \end{verbatim}
 
-The time steps used for the study will be 50, which means that for each aircraft batches of 50 time steps will be taken.
-Using the \textit{zip} function over the data of the aircraft with id=1, which contains 192 cycles. The batches will be distributed this way:
+The time steps used in this approach will be 50, which means that for each aircraft batches of 50 time steps will be taken.
+Grouping the data this way, the total amount of input data will be 15631 matrices of (50, 25) shape.
+As an example, for aircraft with id=1 the batches will be distributed this way:
 
 \begin{verbatim}
     (0, 50)     -> from row 0 to row 50
@@ -73,11 +77,14 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-As explained above, the architecture of the neural network is based on the use of LSTM layers. In this model two different LSTM layers are used to achieve better results.
+As explained above, the architecture of the neural network is based on the use of LSTM layers.
+In this model two different LSTM layers are used to achieve better results.
 
-To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value. This value classifies between two different options: the aircraft will fail or not within the specified cycle.
+To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value.
+This value classifies between two different options: the aircraft will fail or not within the specified cycle.
 
-To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers. This adds a regularization method that drops random units after the LSTM layers, avoiding the network to learn interdependent set of feature weights.
+To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers.
+This adds a regularization method that sets to 0 the value of random units of the LSTM layer, avoiding the network to learn interdependent set of feature weights.
 
 Finally, the loss function selected for this kind of classification problem is \textit{binary crossentropy} using \textit{Adam} as optimizer.
 
@@ -93,13 +100,18 @@ The diagram for the neural network is described in figure \ref{fig:binary-lstm-m
 
 \subsection{Training visualization}
 
-Visualizing the output of the different layers of a network is one of the most useful tools to analyze the network performance. It could also help us to determine if the data analysis has been done correctly and allow us to see possible biases over the data distribution.
+Visualizing the output of the different layers of a network is one of the most useful tools to analyze the network performance.
+It could also help us to determine if the data analysis has been done correctly and allow us to see possible biases over the data distribution.
 
-For the current network, the output of the last LSTM layer has been taken in account to do this analysis. The output of this layer is a tensor of size 50, which represents the hidden units of the LSTM. To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
+For the current network, the output of the last LSTM layer has been taken in account to do this analysis.
+The output of this layer is a tensor of size 50, which represents the hidden units of the LSTM. To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
 
-PCA is a mathematical function that allows us to summarize huge features sets. For this dissertation, two principal components has been configured. In figure \ref{fig:binary-lstm-pca} you can see a graphical representation of this components.
+PCA is a mathematical function that allows us to reduce the dimensional size of the input samples.
+For this dissertation, two principal components has been configured.
+In figure \ref{fig:binary-lstm-pca} you can see a graphical representation of this components.
 
-In this figure we can clearly see how the values conforms to main clusters of data. This has a lot of sense since we are trying to classify the data in two different groups.
+In this figure we can clearly see how the values conforms to main clusters of data.
+This has a lot of sense since we are trying to classify the data in two different groups.
 
 \begin{figure}[H]
 \centering
@@ -112,7 +124,8 @@ In this figure we can clearly see how the values conforms to main clusters of da
 
 \subsection{Results and model evaluation}
 
-After the model is trained using batches of data of size 200. The validation split selected for the data is 5\%.
+After the model is trained using batches of data of size 200.
+The validation split selected for the data is 5\%.
 
 The evolution of the loss and accuracy during the model training can be seen in the figures \ref{fig:binary-lstm-loss} and \ref{fig:binary-lstm-acc}
 
@@ -160,8 +173,9 @@ Being \textit{samples} the total number of data, \textit{timesteps} the amount o
     (samples, timesteps, features)
 \end{verbatim}
 
-The time steps used for the study will be 50, which means that for each aircraft batches of 50 time steps will be taken.
-Using the \textit{zip} function over the data of the aircraft with id=1, which contains 192 cycles. The batches will be distributed this way:
+The time steps used in this approach will be 50, which means that for each aircraft batches of 50 time steps will be taken.
+Grouping the data this way, the total amount of input data will be 15631 matrices of (50, 25) shape.
+As an example, for aircraft with id=1 the batches will be distributed this way:
 
 \begin{verbatim}
     (0, 50)     -> from row 0 to row 50
@@ -188,13 +202,15 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-As explained above, the architecture of the neural network is based on the use of LSTM layers. In this model two different LSTM layers are used to achieve better results.
+As explained above, the architecture of the neural network is based on the use of LSTM layers.
+In this model two different LSTM layers are used to achieve better results.
 
-To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value. This linear value is generated by the network output and represents the \textit{RUL} that the network calculates for an especific aircraft. Finally, an linear activation function is added to the last layer.
+To accomplish the binary classification, the output layer of the network is a Dense layer with a single output value.
+This linear value is generated by the network output and represents the \textit{RUL} that the network calculates for an specific aircraft.
+Finally, a linear activation function is added to the last layer.
 
-To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers. This adds a regularization method that drops random units after the LSTM layers, avoiding the network to learn interdependent set of feature weights.
-
-The loss function selected for this kind of classification problem is \textit{binary crossentropy} using \textit{RMSProp} as optimizer.
+To prevent over-fitting, two Dropout layers are concatenated after the output of both LSTM layers.
+This adds a regularization method that sets to 0 the value of random units of the LSTM layer, avoiding the network to learn interdependent set of feature weights.
 
 For the regression model the metric used is \textit{MAE}, also, in this dissertation the \textit{Coefficient of Determination} (R squared) metric function has been implemented.
 
@@ -210,11 +226,13 @@ The diagram for the neural network is described in figure \ref{fig:regression-ls
 
 \subsection{Results and model evaluation}
 
-After the model is trained using batches of data of size 200. The validation split selected for the data is 5\%.
+After the model is trained using batches of data of size 200.
+The validation split selected for the data is 5\%.
 
 The evolution of the loss and metrics during the model training can be seen in the figures \ref{fig:regression-lstm-loss}, \ref{fig:regression-lstm-r2} and \ref{fig:regression-lstm-mae}
 
-The final results obtained for \textit{MAE} and \textit{R-square} are 11.93 and 0.81 respectively.To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-lstm-results}.
+The final results obtained for \textit{MAE} and \textit{R-square} are 11.93 and 0.81 respectively.To evaluate the results against the ground truth data a comparison graph has been generated.
+This graph can be seen in figure \ref{fig:regression-lstm-results}.
 
 \begin{figure}[H]
 \begin{center}

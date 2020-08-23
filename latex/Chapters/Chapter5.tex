@@ -39,8 +39,9 @@ Being \textit{samples} the total number of data, \textit{timesteps} the amount o
     (samples, timesteps, features)
 \end{verbatim}
 
-The time steps used for the study will be 50, which means that for each aircraft batches of 50 time steps will be taken.
-Using the \textit{zip} function over the data of the aircraft with id=1, which contains 192 cycles. The batches will be distributed this way:
+The time steps used in this approach will be 50, which means that for each aircraft batches of 50 time steps will be taken.
+Grouping the data this way, the total amount of input data will be 15631 matrices of (50, 25) shape.
+As an example, for aircraft with id=1 the batches will be distributed this way:
 
 \begin{verbatim}
     (0, 50)     -> from row 0 to row 50
@@ -70,7 +71,8 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-This model is based on the previous one that focuses on the use of LSTM layers. This time the same architecture, loss and activation functions are used but all the LSTM layers are switched by GRU layers.
+This model is based on the previous one that focuses on the use of LSTM layers.
+This time the same architecture, loss and activation functions are used but all the LSTM layers are switched by GRU layers.
 
 Instead of adding Dropout layers, the dropout field provided by the Keras API implementation of the GRU layers is used.
 
@@ -86,11 +88,15 @@ The diagram for the neural network is described in figure \ref{fig:binary-gru-mo
 
 \subsection{Training visualization}
 
-As done in the previous model, the output of the second RNN layer has been visualized. In this case the second GRU layer is the one selected. The output of this layer is a tensor of size 50, which represents the hidden units of the GRU. To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
+As done in the previous model, the output of the second RNN layer has been visualized.
+In this case the second GRU layer is the one selected.
+The output of this layer is a tensor of size 50, which represents the hidden units of the GRU.
+To extract the information contain by those celds, the \textit{Principal Component Analysis} (PCA) function has been chosen.
 
 In figure \ref{fig:binary-gru-pca} you can see a graphical representation of this components.
 
-As happened with the LSTM model, two separated clusters can be seen in the image. This follows to the same conclusion, the data tends to split into two different options: the aircraft fails in a cycle or it doesn't.
+As happened with the LSTM model, two separated clusters can be seen in the image.
+This follows to the same conclusion, the data tends to split into two different options: the aircraft fails in a cycle or it doesn't.
 
 \begin{figure}[H]
 \centering
@@ -151,8 +157,9 @@ Being \textit{samples} the total number of data, \textit{timesteps} the amount o
     (samples, timesteps, features)
 \end{verbatim}
 
-The time steps used for the study will be 50, which means that for each aircraft batches of 50 time steps will be taken.
-Using the \textit{zip} function over the data of the aircraft with id=1, which contains 192 cycles. The batches will be distributed this way:
+The time steps used in this approach will be 50, which means that for each aircraft batches of 50 time steps will be taken.
+Grouping the data this way, the total amount of input data will be 15631 matrices of (50, 25) shape.
+As an example, for aircraft with id=1 the batches will be distributed this way:
 
 \begin{verbatim}
     (0, 50)     -> from row 0 to row 50
@@ -179,9 +186,10 @@ The result label tensor has the shape:
 
 \subsection{Model definition}
 
-Like the binary one, this model has been created just replacing the LSTMs layers used in the previous chapter with GRU layers. The rest of the components of the model remain the same.
+Like the binary one, this model has been created just replacing the LSTMs layers used in the previous chapter with GRU layers.
+The rest of the components of the model remain the same.
 
-As a point, it is interesting to notice that in order to make the model converge, especific Dropout layers has been used instead that the features provided by the GRU layer API.
+It is interesting to notice that in order to make the model converge, specific Dropout layers has been used instead that the features provided by the GRU layer API.
 
 The diagram for the neural network is described in figure \ref{fig:regression-gru-model}
 
@@ -195,11 +203,13 @@ The diagram for the neural network is described in figure \ref{fig:regression-gr
 
 \subsection{Results and model evaluation}
 
-After the model is trained using batches of data of size 200. The validation split selected for the data is 5\%.
+After the model is trained using batches of data of size 200.
+The validation split selected for the data is 5\%.
 
 The evolution of the loss and metrics during the model training can be seen in the figures \ref{fig:regression-gru-loss}, \ref{fig:regression-gru-r2} and \ref{fig:regression-gru-mae}
 
-The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 0.81 respectively. To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-gru-results}.
+The final results obtained for \textit{MAE} and \textit{R-square} are 13.70 and 0.81 respectively.
+To evaluate the results against the ground truth data a comparison graph has been generated. This graph can be seen in figure \ref{fig:regression-gru-results}.
 
 \begin{figure}[H]
 \begin{center}

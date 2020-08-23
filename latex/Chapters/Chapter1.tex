@@ -23,7 +23,7 @@ The scenario uses data from simulated aircraft sensor to predict when an aircraf
 Two different approaches are used for this problem:
 
 \begin{itemize}
-\item A regression models that manages to answer the question: How many more cycles an in-service engine will last before it fails?
+\item A regression model that manages to answer the question: How many more cycles an in-service engine will last before it fails?
 \item A binary classification model that manages to answer the question: Is this engine going to fail within a specific number of time cycles?
 \end{itemize}
 
@@ -35,7 +35,7 @@ The data provided is divided in three different sets:
 
 \subsection{Training data}\label{subsec:training-data}
 
-The training data consists of multiple multivariate time series with "cycle" as the time unit, together with 21 sensor readings for each cycle.
+The training data consists of 20631 multiple multivariate time series with "cycle" as the time unit, together with 21 sensor readings for each cycle.
 Each time series can be assumed as being generated from a different engine of the same type.
 Each engine is assumed to start with different degrees of initial wear and manufacturing variation, and this information is unknown to the user.
 In this simulated data, the engine is assumed to be operating normally at the start of each time series.
@@ -69,7 +69,7 @@ Taking the sample training data shown in the following table as an example, the 
 
 \subsection{Test data}\label{subsec:text-data}
 
-The testing data has the same data schema as the training data.
+The testing data has the same data schema as the training data with a length iof 13096 rows.
 The only difference is that the data does not indicate when the failure occurs (in other words, the last time period does NOT represent the failure point).
 Taking the sample testing data shown in the following table as an example, the engine with id=1 runs from cycle 1 through cycle 31.
 It is not shown how many more cycles this engine can last before it fails.
@@ -97,7 +97,7 @@ It is not shown how many more cycles this engine can last before it fails.
 \end{table}
 
 \subsection{Ground truth data}\label{subsec:ground-truth-data}
-The ground truth data provides the number of remaining working cycles for the engines in the testing data.
+The ground truth data provides the number of remaining working cycles for the 100 different aircraft engines in the testing data.
 Taking the sample ground truth data shown in the following table as an example, the engine with id=1 in the testing data can run another 112 cycles before it fails.
 
 \begin{table}

@@ -57,7 +57,9 @@ This way, all the rows associated with the same aircraft identifier will have a 
 
 In the case of the binary classification model, the question to answer is \textit{is this engine going to fail within w1 cycles?}.
 
-The w1 represents the window of cycles that we want to take in account to classify. In this dissertation the number of cycles will be set to 30.
+The w1 represents the window of cycles that we want to take in account to classify.
+In this dissertation the number of cycles has been adjusted to 50 assuming that is a reasonable size of cycles to anticipate the maintenance of an aircraft.
+Also 50 cycles is small enough to obtain a big dataset of cycle sequences.
 
 Along with the RUL, it is possible to generate a label (label1) for each entrance indicating if the aircraft failed on this cycle window. To calculate it, just set to 1 ("true") all the RUL values lesser than w1. See table \ref{tab:training-data-w1}
 
@@ -92,9 +94,11 @@ Along with the RUL, it is possible to generate a label (label1) for each entranc
 The information of the aircraft for each time step is formed by 21 different sensor and 3 setting numerical values.
 The distribution of this values is shown in the figure \ref{fig:data-distribution}.
 
-The data distribution shows that most of the sensor data follows a gaussian distribution, avoiding the existence of outliers. With this premise and also taking in account that some of the value ranges can take negative values, the normalization method chosen is min max scaler.
+The data distribution shows that most of the sensor data follows a gaussian distribution, without representative outliers.
+With this premise and also taking in account that some of the value ranges can take negative values, the normalization method chosen is min max scaler.
 
-Min max scaler normalization transforms the values in the distribution to the range [0-1]. This normalization is required to avoid the network to priorize on features with higher values and also to avoid exploding gradient problems.
+Min max scaler normalization transforms the values in the distribution to the range [0,1].
+This normalization is required to avoid the network to priorize on features with higher values and also to avoid exploding gradient problems.
 
 \begin{figure}[H]
     \includegraphics[width=.24\textwidth]{Figures/s1}\hfill
